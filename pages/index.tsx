@@ -5,7 +5,9 @@ import { getSortedPostsData } from '../lib/posts'
 import Link from 'next/link'
 import Date from '../components/date'
 
-export async function getServerSideProps(context) {
+import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next'
+
+export const getServerSideProps :GetServerSideProps = async(context) => {
   const allPostsData = getSortedPostsData()
   return {
     props: {
@@ -14,7 +16,15 @@ export async function getServerSideProps(context) {
   }
 }
 
-export default function Home({ allPostsData }) {
+type Props = {
+  allPostsData: {
+    id:string
+    title:string
+    date:string
+  }[]
+}
+
+export default function Home({ allPostsData }:Props) {
   return (
     <Layout home>
       {/* Keep the existing code here */}
