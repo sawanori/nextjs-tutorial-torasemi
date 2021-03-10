@@ -7,7 +7,7 @@ import Date from '../components/date'
 
 import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next'
 
-export const getServerSideProps :GetServerSideProps = async(context) => {
+export const getStaticProps :GetStaticProps = async(context) => {
   const allPostsData = getSortedPostsData()
   return {
     props: {
